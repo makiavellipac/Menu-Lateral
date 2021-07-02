@@ -2,7 +2,13 @@ import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 
 const config = {
   mode: "production",
@@ -55,7 +61,7 @@ const config = {
         use: [
           {
             loader: 'file-loader',
-            options:{name:'Assets/[name].ext'}
+            options:{name:'Assets/Fonts/[name].ext'}
           }
         ]
       }
@@ -77,8 +83,17 @@ const config = {
     }),
     new ESLintPlugin({ // plugin para terminaciones
       extensions: ["js", "jsx", "ts", "tsx"]
-    })
-  ]
+    }),
+    new CleanWebpackPlugin(),
+    new OptimizeCssAssetsPlugin()
+  ],
+  optimization:{
+    minimize: true,
+    minimizer: [
+      new CssMinimizerWebpackPlugin(),
+      new TerserWebpackPlugin()
+    ]
+  },
 };
 
 export default config;
