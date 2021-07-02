@@ -1,4 +1,5 @@
 import path from "path";
+import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
@@ -8,6 +9,7 @@ const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const dotenv = require('dotenv');
 
 
 const config = {
@@ -83,6 +85,9 @@ const config = {
     }),
     new ESLintPlugin({ // plugin para terminaciones
       extensions: ["js", "jsx", "ts", "tsx"]
+    }),
+    new webpack.DefinePlugin({
+        'process.env': JSON.stringify(dotenv.config().parsed)
     }),
     new CleanWebpackPlugin(),
     new OptimizeCssAssetsPlugin()

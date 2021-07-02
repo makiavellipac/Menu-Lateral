@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const dotenv = require('dotenv');
 
 const config = {
   mode: "development",
@@ -80,7 +81,10 @@ const config = {
     }),
     new ESLintPlugin({ // plugin para terminaciones
       extensions: ["js", "jsx", "ts", "tsx"]
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(dotenv.config().parsed)
+    }),
   ],
  // configuracion del puerto
   devServer: {
