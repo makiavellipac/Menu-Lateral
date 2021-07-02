@@ -1,15 +1,15 @@
 import path from "path";
-import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-  mode: "development",
-  devtool: 'inline-source-map',
+  mode: "production",
   output: {
-    publicPath: "/",
+    path: path.resolve(__dirname,"build"),
+    filename: "[name].[contenthash].js",
+    publicPath: "",
   },
   entry: "./src/index.tsx",
   module: {
@@ -34,12 +34,10 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader:'css-loader',
-            options: { sourceMap: true }
+            loader:'css-loader'
           },
           {
-            loader:'postcss-loader',
-            options: { sourceMap: true }
+            loader:'postcss-loader'
           }
         ]
       },
@@ -74,22 +72,13 @@ const config = {
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
-    new webpack.HotModuleReplacementPlugin(), // pugin para webpack-server
     new ForkTsCheckerWebpackPlugin({
       async: false
     }),
     new ESLintPlugin({ // plugin para terminaciones
       extensions: ["js", "jsx", "ts", "tsx"]
     })
-  ],
- // configuracion del puerto
-  devServer: {
-    contentBase: path.join(__dirname, "build"),
-    historyApiFallback: true,
-    port: 3000,
-    open: true,
-    hot: true
-  },
+  ]
 };
 
 export default config;
