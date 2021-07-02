@@ -30,12 +30,30 @@ const config = {
       {//Modulo para que se compilen archivos .css
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,//Modulo para la importación de imagenes
+        use: [
+          {
+            loader: 'file-loader',
+            options:{name:'Assets/Images/[name].[ext]'}
+          },
+        ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,//modulo de importacion de fuentes
+        use: [
+          {
+            loader: 'file-loader',
+            options:{name:'Assets/[name].ext'}
+          }
+        ]
       }
     ],
   },
   resolve: { //extenciones que soporta la compilacion
-    extensions: [".tsx", ".ts", ".js","jsx"],
+    extensions: [".tsx", ".ts", ".js","jsx"]
   },
   plugins: [
     new HtmlWebpackPlugin({ // plugin para archivos Html
