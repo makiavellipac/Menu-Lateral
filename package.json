@@ -61,9 +61,10 @@
     "mini-css-extract-plugin": "^2.0.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "postcss-cssnext": "^3.1.0",
-    "terser-webpack-plugin": "^5.1.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "simple-git-hooks": "^2.5.1",
+    "terser-webpack-plugin": "^5.1.4",
     "webpack": "^5.41.1"
   },
   "simple-git-hooks": {
