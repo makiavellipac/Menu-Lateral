@@ -7,9 +7,7 @@ import './App.css';
 const App: FC = () => (
   <div className="div-app">
     <img src={logo} alt="logo" />
-    <h1>    Que Pedal!      
-      
-    </h1>
+    <h1> Que Pedal!</h1>
   </div>
 );
 
