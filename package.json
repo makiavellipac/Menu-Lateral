@@ -68,7 +68,7 @@
     "webpack": "^5.41.1"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "npx lint-staged --allow-empty"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
