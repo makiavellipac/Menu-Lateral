@@ -5,8 +5,8 @@ import '../Assets/Fonts/Fuggles-Regular.woff2';
 import './App.css';
 
 const App: FC = () => (
-  <div className="div-app">
-    <img src={logo} alt="logo" />
+          <div className="div-app">
+<img src={logo} alt="logo" />
     <h1>Que Pedal!</h1>
   </div>
 );
