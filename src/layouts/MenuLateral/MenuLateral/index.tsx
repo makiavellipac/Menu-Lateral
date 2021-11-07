@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import UserImage from '../../Assets/Images/60ca12f9265e1.jpg';
+import UserImage from '../../../Assets/Images/60ca12f9265e1.jpg';
 import './index.css';
 
-const index: FC = () => {
+const index: FC = ({ children }) => {
   const [active, setActive] = useState(false);
   const setClass = () => setActive(!active);
   return (
@@ -31,60 +32,60 @@ const index: FC = () => {
             <input type="text" placeholder="Search..." />
           </li>
           <li>
-            <a href="l">
+            <Link to="/Dashboard">
               <i className="bx bx-grid-alt" />
               <span className="links_name">Dashborad</span>
               <span className="tooltip">Dashboard</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/User">
               <i className="bx bxs-user" />
               <span className="links_name">User</span>
               <span className="tooltip">User</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/Messages">
               <i className="bx bx-chat" />
               <span className="links_name">Messages</span>
               <span className="tooltip">Messages</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/Analytics">
               <i className="bx bx-pie-chart-alt-2" />
               <span className="links_name">Analytics</span>
               <span className="tooltip">Analytics</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/File_Manager">
               <i className="bx bx-folder" />
               <span className="links_name">File Manager</span>
               <span className="tooltip">File Manager</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/Order">
               <i className="bx bx-cart-alt" />
               <span className="links_name">Order</span>
               <span className="tooltip">Order</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/Saved">
               <i className="bx bx-heart" />
               <span className="links_name">Saved</span>
               <span className="tooltip">Saved</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="l">
+            <Link to="/Settings">
               <i className="bx bx-cog" />
-              <span className="links_name">Setting</span>
+              <span className="links_name">Settings</span>
               <span className="tooltip">Settings</span>
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="profile-content">
@@ -101,7 +102,7 @@ const index: FC = () => {
         </div>
       </div>
       <div className="home-content">
-        <div className="text">Home Content</div>
+        <div className="text">{children}</div>
       </div>
     </>
   );
